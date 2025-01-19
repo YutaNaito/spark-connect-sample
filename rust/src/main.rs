@@ -1,5 +1,5 @@
 use arrow_array::{ArrayRef, Int64Array, RecordBatch, StringArray};
-use spark_connect_rs::dataframe::JoinType;
+use spark_connect_rs::dataframe::{ExplainMode, JoinType};
 use spark_connect_rs::functions::col;
 use spark_connect_rs::{SparkSession, SparkSessionBuilder};
 use std::sync::Arc;
@@ -28,7 +28,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         col("name"),
         col("department"),
     ]);
-    joined_df.show(Some(10), Some(10), Some(false)).await?;
+    joined_df
+        .clone()
+        .show(Some(10), Some(10), Some(false))
+        .await?;
+    joined_df.explain(Some(ExplainMode::Extended)).await?;
 
     Ok(())
 }
