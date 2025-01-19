@@ -14,7 +14,8 @@ dependencies = [
     "pyarrow (>=19.0.0,<20.0.0)",
     "grpcio (>=1.69.0,<2.0.0)",
     "grpcio-status (>=1.69.0,<2.0.0)",
-    "googleapis-common-protos (>=1.66.0,<2.0.0)"
+    "googleapis-common-protos (>=1.66.0,<2.0.0)",
+    "setuptools (>=75.8.0,<76.0.0)"
 ]
 
 
