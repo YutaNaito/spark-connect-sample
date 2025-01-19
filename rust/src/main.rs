@@ -21,7 +21,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let df1 = spark.create_dataframe(&data1)?;
     let df2 = spark.create_dataframe(&data2)?;
 
-    //let condition = Some(col("id").eq(col("_id")));
     let condition = Some(df1.clone().col_regex("id").eq(df2.clone().col_regex("id")));
     let joined_df = df1.clone().join(df2, condition, JoinType::Inner).select([
         df1.clone().col_regex("id"),
