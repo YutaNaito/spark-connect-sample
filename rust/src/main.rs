@@ -16,14 +16,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let data1 = RecordBatch::try_from_iter(vec![("id", id.clone()), ("name", name.clone())])?;
     let data2 =
-        RecordBatch::try_from_iter(vec![("id", id.clone()), ("department", department.clone())])?;
+        RecordBatch::try_from_iter(vec![("number", id.clone()), ("department", department.clone())])?;
 
     let df1 = spark.create_dataframe(&data1)?;
     let df2 = spark.create_dataframe(&data2)?;
 
-    let condition = Some(df1.clone().col_regex("id").eq(df2.clone().col_regex("id")));
+    let condition = Some(col("id").eq(col("number")));
     let joined_df = df1.clone().join(df2, condition, JoinType::Inner).select([
-        df1.clone().col_regex("id"),
+        col("id"),
         col("name"),
         col("department"),
     ]);
