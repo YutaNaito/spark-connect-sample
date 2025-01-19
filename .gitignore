@@ -1,2 +1,4 @@
 poetry.lock
 .ruff_cache/
+Cargo.lock
+target/
