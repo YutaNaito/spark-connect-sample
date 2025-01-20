@@ -7,4 +7,4 @@ edition = "2021"
 arrow = "53.4.0"
 arrow-array = "53.4.0"
 spark-connect-rs = "0.0.1-beta.5"
-tokio = "1.43.0"
+tokio = { version = "1.43.0", features = ["rt-multi-thread", "macros"] }

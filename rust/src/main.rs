@@ -4,7 +4,7 @@ use spark_connect_rs::functions::col;
 use spark_connect_rs::{SparkSession, SparkSessionBuilder};
 use std::sync::Arc;
 
-#[tokio::main(flavor = "current_thread")]
+#[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let spark: SparkSession = SparkSessionBuilder::remote("sc://127.0.0.1:15002/;user_id=YN")
         .build()
